@@ -1,0 +1,63 @@
+CLG Ryze 
+	Changelog:
+		0.1 Initial Release
+				
+----------------------------
+
+if myHero.charName ~= "Ryze" then return end
+
+--Welcome Message
+function SayHello()
+	-- Print to the chat area
+	PrintChat ("CLG Ryze")
+end
+
+function OnLoad ()
+		SayHello()
+end
+
+--Syntax
+Config:addParam(parameter_name, description, parameter type, initialt_state, key_code_if_needed)
+
+--In Game
+Config:addParam("combo", "Combo" SCRIPT_PARAM_ONKEYDOWN, false, 32)
+Config:addParam("harass", "C" SCRIPT_PARAM_ONKEYTOGGLE, false, C)
+Config:addParam("laneClear", "V" SCRIPT_PARAM_ONKEYTOGGLE, false, V)
+Config:addParam("jungleClear", "V" SCRIPT_PARAM_ONKEYTOGGLE, false, V)
+Config:addParam("showRanges", "Show Ranges" SCRIPT_PARAM_ONOFF, true)
+Config:addParam("showQ", "Show Q Range" SCRIPT_PARAM_ONOFF, true)
+Config:addParam("showW", "Show W Range" SCRIPT_PARAM_ONOFF, true)
+Config:addParam("ShowE", "Show E Range" SCRIPT_PARAM_ONOFF, true)
+
+--Spell Variables
+local QSpell range = 625
+local WSpell range = 600
+local ESpell range = 600
+local RSpell range = -1
+
+--Combo
+local QSpell range = 625
+	if GetDistance(myHero, target)<= QSpellRange then
+		if (myHero:CanUseSpell(_Q) == READY) then
+			CastSpell(_Q, ts.target)
+	end
+	
+local WSpell range = 600
+	if GetDistance(myHero, target)<= WSpellRange then
+		if (myHero:CanUseSpell(_W) == READY) then
+			CastSpell(_W, ts.target)
+	end
+	
+local ESpell range = 600
+	if GetDistance(myHero, target)<= ESpellRange then
+		if (myHero:CanUseSpell(_E) == READY) then
+			CastSpell(_E, ts.target)
+	end
+	
+local RSpell range = -1
+	if GetDistance(myHero, target)<= RSpellRange then
+		if (myHero:CanUseSpell(_R) == READY) then
+			CastSpell(_R, ts.target)
+	end
+end
+		
